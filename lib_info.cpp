@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <algorithm>
+
 using namespace std;
 
 struct Song { 
@@ -50,7 +52,16 @@ int main (int argc, char* argv[]) {
         stringstream ss(line); 
 
        if (ss >> songTitle >> songTime >> artistName >> albumName >> songGenre >> songNum) {
+
+        //Convert underscores to spaces
+        replace(songTitle.begin(), songTitle.end(), '_', ' ');
+        replace(artistName.begin(), artistName.end(), '_', ' ');
+        replace(albumName.begin(), albumName.end(), '_', ' ');
+
+        //Convert time to seconds
+        
            
+        //Note: song map key is track number not title, helps when sorting numerically
         data[artistName].albums[albumName].songs[songNum].title = songTitle;
         data[artistName].albums[albumName].songs[songNum].time = songTime; 
         data[artistName].name = artistName; 
@@ -58,12 +69,9 @@ int main (int argc, char* argv[]) {
         data[artistName].albums[albumName].songs[songNum].genre = songGenre;
         data[artistName].albums[albumName].songs[songNum].trackNum = songNum;
 
+        //calc total time for album and artist
             
        }
-
-         //convert underscores to spaces
-            //time -> int -> seconds
-            //calc total time for album and artist 
             
 
     } 
