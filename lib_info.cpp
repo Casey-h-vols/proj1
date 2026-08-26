@@ -4,6 +4,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -29,6 +30,7 @@ struct Artist {
 };
 
 
+
 // Main func needs to 
 int main (int argc, char* argv[]) { 
 
@@ -52,6 +54,11 @@ int main (int argc, char* argv[]) {
         stringstream ss(line); 
 
        if (ss >> songTitle >> songTime >> artistName >> albumName >> songGenre >> songNum) {
+		
+		// Debug string for file ingestion
+		cout << "Title: " << songTitle << "\n";
+		cout << "Time: " << songTime << "\n";
+
 
         //Convert underscores to spaces
         replace(songTitle.begin(), songTitle.end(), '_', ' ');
@@ -61,13 +68,20 @@ int main (int argc, char* argv[]) {
         //Convert time to seconds
         int min, sec;
         string minStr, secStr;
+		vector<int> timeVec;
         stringstream ss2(songTime); 
-        
+        while (getline(ss2,minStr,':')) {
+			cout << "time check:  " <<minStr << "\n";
+			timeVec.push_back(stoi(minStr));
+		}
+		sec = (timeVec[0]*60) + timeVec[1];
+		cout << "TIME: " << sec << "\n";
            
            
         //Note: song map key is track number not title, helps when sorting numerically
-        data[artistName].albums[albumName].songs[songNum].title = songTitle;
-        data[artistName].albums[albumName].songs[songNum].time = songTime; 
+        data[artistName].albums[albumName].songs[songNum].title = songTitle;		
+        data[artistName].albums[albumName].songs[songNum].time = sec;
+		
         data[artistName].name = artistName; 
         data[artistName].albums[albumName].name = albumName;
         data[artistName].albums[albumName].songs[songNum].genre = songGenre;
