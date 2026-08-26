@@ -30,10 +30,8 @@ struct Artist {
 // Main func needs to 
 int main (int argc, char* argv[]) { 
 
-    //Create 3-d Map
+    //Create 3D Map
     map <string, Artist> data; 
-
-    //Check argc?
     
     //Open and read file contents
     ifstream inputFile(argv[1]); 
@@ -43,26 +41,26 @@ int main (int argc, char* argv[]) {
         return -1; 
     }
 
-    string line; 
+    string line;
+    string artistKey, albumKey, songTitle, songTime, songName, artistName, albumName, songGenre;
+    int songNum;
 
     //Extract and store data from each line
     while (getline(inputFile, line)) {
         stringstream ss(line); 
 
-        //incorrect accessing of map elements I think?
-        if (ss >> data[Artist][Album][Song].title 
-               >> data[Artist][Album][Song].time
-               >> data[Artist].name
-               >> data[Artist][Album].name
-               >> data[Artist][Album][Song].genre
-               >> data[Artist][Album][Song].trackNum ) {
+       if (ss >> songTitle >> songTime >> artistName >> albumName >> songGenre >> songNum) {
+           
+        data[artistName].albums[albumName].songs[songTitle].title = songTitle;
 
-            //convert underscores to spaces
+            
+       }
+
+         //convert underscores to spaces
             //time -> int -> seconds
             //calc total time for album and artist 
             
 
-        }
     } 
     
     inputFile.close();
