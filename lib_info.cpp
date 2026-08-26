@@ -1,29 +1,77 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <map>
+using namespace std;
 
 struct Song { 
     string title;
-    int time;  // could also be a string
+    string time; 
+    string genre;
+    int trackNum;
 };
 
 struct Album {
     map <int, Song > songs;
     string name;
-    int time;
+    int totalTime;
     int nsongs;  // optional variable but makes it easier
 };
 
 struct Artist {
     map <string, Album > albums;
     string name;
-    int time;
+    int totalTime;
     int nsongs;
 };
 
 
 // Main func needs to 
-//	
+int main (int argc, char* argv[]) { 
+
+    //Create 3-d Map
+    map <string, Artist> data; 
+
+    //Check argc?
+    
+    //Open and read file contents
+    ifstream inputFile(argv[1]); 
+
+    if (!inputFile.is_open()) { 
+        cerr << "Failed to open file" << endl; 
+        return -1; 
+    }
+
+    string line; 
+
+    //Extract and store data from each line
+    while (getline(inputFile, line)) {
+        stringstream ss(line); 
+
+        //incorrect accessing of map elements I think?
+        if (ss >> data[Artist][Album][Song].title 
+               >> data[Artist][Album][Song].time
+               >> data[Artist].name
+               >> data[Artist][Album].name
+               >> data[Artist][Album][Song].genre
+               >> data[Artist][Album][Song].trackNum ) {
+
+            //convert underscores to spaces
+            //time -> int -> seconds
+            //calc total time for album and artist 
+            
+
+        }
+    } 
+    
+    inputFile.close();
+
+    //Print data 
+    
+    return 0; 
+}
+
 //	- create 3-d maps 
 //	- open/ read file contents
 //	- apply data where it needs to go 
