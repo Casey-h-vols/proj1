@@ -9,7 +9,7 @@ using namespace std;
 
 struct Song { 
     string title;
-    string time; 
+    int time; 
     string genre;
     int trackNum;
 };
@@ -59,7 +59,11 @@ int main (int argc, char* argv[]) {
         replace(albumName.begin(), albumName.end(), '_', ' ');
 
         //Convert time to seconds
+        int min, sec;
+        string minStr, secStr;
+        stringstream ss2(songTime); 
         
+           
            
         //Note: song map key is track number not title, helps when sorting numerically
         data[artistName].albums[albumName].songs[songNum].title = songTitle;
