@@ -52,6 +52,11 @@ int main (int argc, char* argv[]) {
        if (ss >> songTitle >> songTime >> artistName >> albumName >> songGenre >> songNum) {
            
         data[artistName].albums[albumName].songs[songTitle].title = songTitle;
+        data[artistName].albums[albumName].songs[songTitle].time = songTime; 
+        data[artistName].name = artistName; 
+        data[artistName].albums[albumName].name = albumName;
+        data[artistName].albums[albumName].songs[songTitle].genre = songGenre;
+        data[artistName].albums[albumName].songs[songTitle].trackNum = songNum;
 
             
        }
