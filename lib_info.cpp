@@ -20,3 +20,14 @@ struct Artist {
     int time;
     int nsongs;
 };
+
+
+// Main func needs to 
+//	
+//	- create 3-d maps 
+//	- open/ read file contents
+//	- apply data where it needs to go 
+//		- insert song -> data[artist][album][track]
+//		- insert album total -> albumLengthData[Artist][Album] += time;
+//	
+
