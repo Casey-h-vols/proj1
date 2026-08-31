@@ -24,5 +24,5 @@ This program reads in an MP3 music library file to then store, organize, and ret
 Learned how to instantiate and nest iterators as well as properly access the objects that those iterators reference. Brute forced the time conversion probably a good place to start optimization.	
 	-casey
 	
-Learned how to manipulate, store, and access data from triple nested maps efficiently along with review on time conversions. 
+Learned how to manipulate, store, and access data from triple nested maps efficiently along with review on time conversions. Overall, collaborative work went smoothly. Partners stayed in communication, exchanged high level approaches, and implemented similar amounts of code. 
 	-Parker Babb
