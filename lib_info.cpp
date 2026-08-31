@@ -56,8 +56,8 @@ int main (int argc, char* argv[]) {
        if (ss >> songTitle >> songTime >> artistName >> albumName >> songGenre >> songNum) {
 		
 		// Debug string for file ingestion
-		cout << "Title: " << songTitle << "\n";
-		cout << "Time: " << songTime << "\n";
+		//cout << "Title: " << songTitle << "\n";
+		//cout << "Time: " << songTime << "\n";
 
 
         //Convert underscores to spaces
@@ -70,8 +70,8 @@ int main (int argc, char* argv[]) {
         string minStr, secStr;
 		vector<int> timeVec;
         stringstream ss2(songTime); 
-        while (getline(ss2,minStr,':')) {
-			cout << "time check:  " <<minStr << "\n";
+		while (getline(ss2,minStr,':')) {
+			//cout << "time check:  " <<minStr << "\n";
 			timeVec.push_back(stoi(minStr));
 		}
 		sec = (timeVec[0]*60) + timeVec[1];
@@ -81,8 +81,9 @@ int main (int argc, char* argv[]) {
         //Note: song map key is track number not title, helps when sorting numerically
         data[artistName].albums[albumName].songs[songNum].title = songTitle;		
         data[artistName].albums[albumName].songs[songNum].time = sec;
-		
-        data[artistName].name = artistName; 
+		data[artistName].albums[albumName].totalTime += sec;
+		data[artistName].totalTime += sec;
+		data[artistName].name = artistName; 
         data[artistName].albums[albumName].name = albumName;
         data[artistName].albums[albumName].songs[songNum].genre = songGenre;
         data[artistName].albums[albumName].songs[songNum].trackNum = songNum;
@@ -101,10 +102,10 @@ int main (int argc, char* argv[]) {
     return 0; 
 }
 
-//	- create 3-d maps 
-//	- open/ read file contents
+ 
+
 //	- apply data where it needs to go 
 //		- insert song -> data[artist][album][track]
 //		- insert album total -> albumLengthData[Artist][Album] += time;
 //	
-
+//  - print entire library using nested iterators
