@@ -41,7 +41,9 @@ string convert_time(int a){
 		} else return to_string(min)+":"+to_string(sec);
 	}
 	sec = a%60;
-	return "0:"+to_string(sec);
+	if (sec < 10){
+		return "0:0"+to_string(sec);
+    } else return "0:"+to_string(sec);
 	 
 }
 
